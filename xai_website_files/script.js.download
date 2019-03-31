@@ -1,0 +1,149 @@
+/* Author: Shantanu Bala
+   Description: This initializes jQuery plugins
+                and establishes basic interactions.
+*/
+
+//Image Carousels
+jQuery(function ($) {
+  $(".carousel").carousel();
+});
+
+//Tweet Counter
+jQuery(function ($) {
+  var count,
+    el,
+    insertCommas,
+    insertText,
+    updateCounter,
+    interval;
+
+  count = 1500000000 + Math.ceil(8 * (new Date - 1330624399683) / 1000);
+  el = $("#tweet-count");
+
+  insertCommas = function (s) {
+    return s.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+  };
+
+  insertText = function () {
+    el.text(insertCommas(count));
+  };
+
+  updateCounter = function () {
+    count += Math.ceil(Math.random()*16);
+  };
+
+  interval = window.setInterval(function () {
+    updateCounter();
+    insertText();
+  }, 1000);
+});
+
+
+//Google Maps
+jQuery(window).on("load", function () {
+  var el, map, i, clearMarkers, attachMarkers, onFail, markers = [], info;
+
+  el = jQuery("#map_canvas");
+  if (el.length > 0) {
+    map = new google.maps.Map(el[0], {
+      'center': new google.maps.LatLng(-34.397, 150.644),
+      'zoom': 1,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    info = new google.maps.InfoWindow();
+  }
+
+  clearMarkers = function () {
+    var i = markers.length;
+    while (i > 0) {
+      i -= 1;
+      markers[i].setMap(null);
+    }
+  };
+
+  attachMarkers = function (data) {
+    var i = data.length, dat, lat, lng, tmp;
+    while (i > 0) {
+      i -= 1;
+      dat = data[i];
+      lat = dat.lat, lng = dat.lng;
+      if (lat && lng) {
+        tmp = new google.maps.Marker({
+          'map': map,
+          'title': dat.user + ": " + dat.tweet,
+          'position': new google.maps.LatLng(lat, lng)
+        });
+        
+        google.maps.event.addListener(tmp, 'click', function () {
+          info.setContent(this.title);
+          info.open(map, this);
+        });
+        
+        markers.push(tmp);
+      }
+    }
+  };
+
+  onFail = function () {
+    alert("Unable to connect to TweetTracker!");
+    attachMarkers();
+  };
+
+  $("#election-map").on("click", function (e) {
+    e.preventDefault();
+    clearMarkers();
+    var request = $.getJSON('data/election.json', {
+      'catID': 13,
+      'dbname': "twtdemo"
+    }, attachMarkers);
+    request.fail(onFail);
+  });
+  $("#egypt-map").on("click", function (e) {
+    e.preventDefault();
+    clearMarkers();
+    var request = $.getJSON('data/egypt.json', {
+      'catID': 20,
+      'dbname': "tweettrackerarab"
+    }, attachMarkers);
+    request.fail(onFail);
+  });
+  $("#syria-map").on("click", function (e) {
+    e.preventDefault();
+    clearMarkers();
+    var request = $.getJSON('data/syria.json', {
+      'catID': 25,
+      'dbname': "tweettrackerarab"
+    }, attachMarkers);
+    request.fail(onFail);
+  });
+  $("#ows-map").on("click", function (e) {
+    e.preventDefault();
+    clearMarkers();
+    var request = $.getJSON('data/ows.json', {
+      'catID': 2,
+      'dbname': "twtdemo"
+    }, attachMarkers);
+    request.fail(onFail);
+  });
+  $("#crisis-map").on("click", function (e) {
+    e.preventDefault();
+    clearMarkers();
+    var request = $.getJSON('data/crisis.json', {
+      'catID': 18,
+      'dbname': "tweettracker"
+    }, attachMarkers);
+    request.fail(onFail);
+  });
+  $("#earthquake-map").on("click", function (e) {
+    e.preventDefault();
+    clearMarkers();
+    var request = $.getJSON('data/earthquake.json', {
+      'catID': 15,
+      'dbname': "tweettracker"
+    }, attachMarkers);
+    request.fail(onFail);
+  });
+  $("#event-selection a").on("click", function (e) {
+    $("#event-selector").html('Event: ' + $(this).html() + '<span class="caret"></span>');
+  });
+});

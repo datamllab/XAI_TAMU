@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://tweettracker.fulton.asu.edu/ -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+</style><link type="text/css" rel="stylesheet" href="./xai_website_files/css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
+</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style>
+  
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>XAI in TAMU</title>
+  <meta name="description" content="">
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <!-- meta name="viewport" content="width=device-width,initial-scale=1" -->
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link rel="stylesheet" href="./xai_website_files/style.css">
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build.
+       Modernizr enables HTML5 elements & feature detects for optimal performance.
+       Create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="./xai_website_files/ga.js.download"></script><script src="./xai_website_files/modernizr-2.0.6.min.js.download"></script>
+<script type="text/javascript" charset="UTF-8" src="./xai_website_files/common.js.download"></script><script type="text/javascript" charset="UTF-8" src="./xai_website_files/map.js.download"></script><script type="text/javascript" charset="UTF-8" src="./xai_website_files/util.js.download"></script><script type="text/javascript" charset="UTF-8" src="./xai_website_files/infowindow.js.download"></script><style type="text/css">.gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+      .gm-style img { max-width: none; }</style><script type="text/javascript" charset="UTF-8" src="./xai_website_files/onion.js.download"></script><script type="text/javascript" charset="UTF-8" src="./xai_website_files/controls.js.download"></script><script type="text/javascript" charset="UTF-8" src="./xai_website_files/marker.js.download"></script><script type="text/javascript" charset="UTF-8" src="./xai_website_files/stats.js.download"></script></head>
+
+<body>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://microsoft.com/ie">Upgrade to a newer browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true"> install Google Chrome Frame</a> to experience this site. </p>
+  <![endif]-->
+  <header class="container">
+    <div class="hero-unit">
+      <h1>XAI</h1>
+      <p>
+        The target of XAI is to help end users understand the rationale of AI systemâ€™s decisions. <br>
+        Our research targets an <strong class="red"> Interpretable Deep Learning End-to-End (IDLEE) </strong> framework. <br>
+        It enables end users to <strong class="blue">understand</strong> the rationale of learning <strong class="orange"> models </strong> and <strong class="green"> predictions </strong>.
+      </p>
+    </div>
+  </header>
+
+  <div role="main" class="container">
+    <div class="row separated">
+      <div class="span6">
+        <h2><I>Why need XAI?</I></h2>
+        <p>
+          With the aid of interpretability, people can better manage and appropriately trust AI systems, which is important for making decisions in the high-stake domains.
+        </p>
+        <h2><I>Where may need XAI?</I></h2>
+        <h3>Health Infomatics</h3>
+        <p>
+          People may need more interpretations towards health-related areas, including medical diagnosis, electronic health record (EHR), healthcare industry and etc.
+        </p>
+        <h3>Social Infomatics</h3>
+        <p>
+          More interpretability could also contribute to people's social life, and help to better detect as well as filter tons of spammers like fake news in social media.
+        </p>
+      </div>
+
+      <div class="span6">
+        <div class="carousel" id="myCarousel">
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="./xai_website_files/imaging medical.jpg" alt="Medical Imaging">
+              <div class="carousel-caption">
+                <p>
+                  Medical imaging needs to show why and how a specific diagnosis come out.
+                </p>
+              </div>
+            </div>
+            <div class="item">
+              <img src="./xai_website_files/ehr.jpg" alt="EHR">
+              <div class="carousel-caption">
+                <p>
+                  EHR could provide more evidence to people about the diagnosis and treatment.
+                </p>
+              </div>
+            </div>
+            <div class="item">
+              <img src="./xai_website_files/healthcare policy.jpg" alt="Healthcare Policy">
+              <div class="carousel-caption">
+                <p>
+                  Healthcare policy system still needs more reasonable explanations to public society.
+                </p>
+              </div>
+            </div>
+            <div class="item">
+              <img src="./xai_website_files/EmailSpam.jpg" alt="Spammer">
+              <div class="carousel-caption">
+                <p>
+                  Better interpretability of spammer detector could help people to trust classification results.
+                </p>
+              </div>
+            </div>
+            <div class="item">
+              <img src="./xai_website_files/fake news.jpg" alt="Fake News">
+              <div class="carousel-caption">
+                <p>
+                  People need to identify the fake news with relevant evidences or justifications.
+                </p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control left" href="http://tweettracker.fulton.asu.edu/#myCarousel" data-slide="prev">â€¹</a>
+          <a class="carousel-control right" href="http://tweettracker.fulton.asu.edu/#myCarousel" data-slide="next">â€º</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row separated">
+      <div class="span12"><h2>Our Current Work</h2></div>
+      <div class="span4">
+        <div class="carousel-inner">
+          <div class="item">
+            <img src="./xai_website_files/work1.jpg" alt="Text Classification">
+            <div class="carousel-caption">
+              <p>
+                Our System can classify the health text into different catergories with interpretations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span4">
+        <div class="carousel-inner">
+          <div class="item">
+            <img src="./xai_website_files/work2.jpg" alt="Image Classification">
+            <div class="carousel-caption">
+              <p>
+                Our system can classify the general images providing with the corresponding reason.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span4">
+        <div class="carousel-inner">
+          <div class="item">
+            <img src="./xai_website_files/work3.jpg" alt="Fake News Detection">
+            <div class="carousel-caption">
+              <p>
+                Our system aims to effectively detect and interpret fake news in social media.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <h4 align="center">
+          Work 1: <br> 
+          <strong class="green">Interpretable Health Text Classification</strong> <br> 
+          (Refining) 
+       </h4>
+        <p align="center">
+          Our interpretable health text classifier could help to process tons of medical text, for example, in EHR. Each input sentence could be classified into 3 categories, i.e. <I>Medication</I>, <I>Symptom</I> and <I>Background</I>. Besides, the dominated features and discriminative patterns for each classification would also be provided as related interpretations.
+        </p>
+      </div>
+      <div class="span4">
+        <h4 align="center">Work 2: <br> 
+            <strong class="orange">Interpretable Image Classification</strong> <br>
+            (Refining) 
+        </h4>
+        <p align="center">
+         Our interpretable image classifier has two parts of functionalities. First, it can interpret the deep classification model by using some <I>shallow models</I> such as linear model and gradient boosting tree model. Second, it can interpret the predictions generated by deep classifier, and show the relevant hihgly-weighted <I>super-pixels</I> as corresponding interpretations.
+        </p>
+      </div>
+      <div class="span4">
+        <h4 align="center">Work 3: <br> 
+           <strong class="blue">Interpretable Fake News Detection</strong> <br> 
+           (In Progress...) 
+        </h4>
+        <p align="center">
+          In this work, we plan to detect fake news in social media, and provide corresponding multi-source evidence as relevant interpretations. The functionality and relevant details would be post out very soon.
+        </p>
+      </div>
+    </div>
+
+    <div class="row separated">
+      <div class="span15">
+        <h3>Publications</h3>
+        <p>
+		</p><ul>
+    <li>Zepeng Huo, Xiao Huang, and Xia Hu . "<a href="./Link Prediction with Personalized Social Influence.pdf">Link Prediction with Personalized Social Influence</a>", AAAI'18.</li>
+    <li>Xiao Huang, Qingquan Song, Jundong Li and Xia Hu. "<a href="./Exploring Expert Cognition for Attributed Network Embedding.pdf">Exploring Expert Cognition for Attributed Network Embedding</a>", WSDM'18.</li>
+		<li>Jun Gao, Ninghao Liu, Mark Lawley and Xia Hu. "<a href="./An Interpretable Classification Framework for Information Extraction from Online Healthcare Forums.pdf">An Interpretable Classification Framework for Information Extraction from Online Healthcare Forums</a>", Journal of Healthcare Engineering Volume 2017, Article ID 2460174.</li>
+    <li>Ninghao Liu, Xiao Huang, and Xia Hu. "<a href="./Accelerated Local Anomaly Detection via Resolving Attributed Networks.pdf">Accelerated Local Anomaly Detection via Resolving Attributed Networks</a>", Proceedings of IJCAI'17.</li>
+    <li>Ninghao Liu, Donghwa Shin and Xia Hu. "<a href="./Contextual Outlier Interpretation.pdf">Contextual Outlier Interpretation</a>", submitted to arXiv.</li>
+		</ul>
+        <p></p>
+      </div>
+    </div>
+<div class="row separated">
+  <div class="span12">
+<h3>Try our online demo (current version) <a href="http://csedatasrv.cs.tamu.edu:3000/">here</a>!</h3> <br>
+<h3>If the link above doesn't work, watch our demo video on YouTube <a href="https://www.youtube.com/watch?v=U7Lrb5baeYs&t" target="_blank">here</a>!</h3>
+</div>
+</div>
+    <div class="row separated">
+      <div class="span12"><h3>These research are conducted by the <a href="http://faculty.cs.tamu.edu/xiahu/" target="_blank">DATA lab</a> and <a href="http://people.tamu.edu/~eragan/index.html" target="_blank">INDIE lab</a> at Texas A & M University.</h3></div>
+    </div>
+
+    <div class="row separated">
+      <div class="span9">
+        <div class="thumbnails">
+          <div class="span3">
+            <div class="thumbnail">
+              <img src="./xai_website_files/Hu.jpg" alt="Photo" height="150px" style="margin-left:20px;">
+              <div class="caption" align="center">
+                Dr. Xia (Ben) Hu is the director of the DATA Lab.
+              </div>
+            </div>
+          </div>
+
+          <div class="span3">
+            <div class="thumbnail">
+              <img src="./xai_website_files/eric.jpg" alt="Photo" height="150px" style="margin-left:20px;">
+              <div class="caption" align="center">
+                Dr. Eric Ragan is the director of the INDIE Lab.
+              </div>
+            </div>
+          </div>
+
+          <div class="span3">
+            <div class="thumbnail">
+              <img src="./xai_website_files/lnh.jpg" alt="Photo" height="150px" style="margin-left:20px;">
+              <div class="caption" align="center">
+                Ninghao Liu is a Ph.D. student in the DATA Lab.
+              </div>
+            </div>
+          </div>
+
+          <div class="span3">
+            <div class="thumbnail">
+              <img src="./xai_website_files/sinamohseni.jpg" alt="Photo" height="150px" style="margin-left:20px;">
+              <div class="caption" align="center">
+                Sina Mohseni is a Ph.D. student in the INDIE Lab.
+              </div>
+            </div>
+          </div>
+
+          <div class="span3">
+              <div class="thumbnail">
+                <img src="./xai_website_files/Fan Yang.jpg" alt="Photo" height="150px" style="margin-left:20px;">
+                <div class="caption" align="center">
+                  Fan Yang is a Ph.D. student in the DATA Lab.
+                </div>
+              </div>
+          </div>
+
+          <div class="span3">
+              <div class="thumbnail">
+                <img src="./xai_website_files/dmn.jpg" alt="Photo" height="150px" style="margin-left:20px;">
+                <div class="caption" align="center">
+                Mengnan Du is a Ph.D. student in the DATA Lab.
+                </div>
+              </div>
+          </div>
+
+          <div class="span3">
+              <div class="thumbnail">
+                <img src="./xai_website_files/Shiva.jpg" alt="Photo" height="150px" style="margin-left:20px;">
+                <div class="caption" align="center">
+                  Shiva Kumar Pentyala is a M.S. student in the DATA Lab.
+                </div>
+              </div>
+          </div>
+
+          <div class="span9">
+            <br>
+            <strong>Contact Us:</strong> hu@cse.tamu.edu | 979-845-8873 |
+            TAMU â€“ MS3112,
+            College Station, TX 77843-3112 
+          </div>
+        </div>
+      </div>
+      <div class="span3">
+        <p><img src="./xai_website_files/tamu.jpg" alt="TAMU DATA Logo"></p>
+        <p><img src="./xai_website_files/darpa.jpg" id="onr-logo" alt="DARPA Logo"></p>
+        <p><img src="./xai_website_files/xai.jpg" id="onr-logo" alt="xai"></p>
+        <p>
+          <em>This project is funded by the Defense Advanced Research Projects Agency (DARPA) </em></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container">
+    Â© 2017 XAI in Texas A & M 
+  </footer>
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="./xai_website_files/jquery.min.js.download"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via build script -->
+  <script defer="" src="./xai_website_files/plugins.js.download"></script>
+  <script defer="" src="./xai_website_files/script.js.download"></script>
+  <!-- end scripts -->
+
+
+  <script type="text/javascript" src="./xai_website_files/js"></script>
+
+
+  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+       mathiasbynens.be/notes/async-analytics-snippet -->
+  <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+</body></html>
